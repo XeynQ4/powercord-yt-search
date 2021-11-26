@@ -43,7 +43,19 @@ module.exports = class YTSearch extends Plugin {
                     query
                 )}&key=${apiKey}`;
 
-                const data = await this.getData(url);
+                const data = await this.getData(url).catch(e => {
+                    if (e.name === 'quotaExceeded') {
+                        return this.sendMessage({
+                            content:
+                                'You have exceeded the daily quota for this API key. Try again tommorow.'
+                        });
+                    }
+                    console.error(e);
+                    return this.sendMessage({
+                        content:
+                            'An error occured. I printed it in the console if you want to take a look.'
+                    });
+                });
                 const video = data.items[0];
                 const snippet = video.snippet;
                 return this.sendMessage({
