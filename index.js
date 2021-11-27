@@ -103,7 +103,7 @@ module.exports = class YTSearch extends Plugin {
         const received = createBotMessage(channels.getChannelId(), '');
         received.author = {
             ...received.author,
-            username: 'Powercord',
+            username: 'YouTube',
             avatar: 'powercord'
         };
         return receiveMessage(received.channel_id, { ...received, ...options });
