@@ -1,9 +1,11 @@
 # Youtube Search for Powercord
 
-This plugin adds .yt or .youtube command that searches youtube for the query user provided as the first argument.
+This plugin adds .yt or .youtube command that searches youtube for the query user provided as the argument. User can also provide --send to send the video link to chat.
 
 ## Setup Guide
+
 To use this plugin you need to get a Youtube API key. You can get it by following these steps:
+
 1. Go to https://console.cloud.google.com/
 2. Agree to TOS and click on "Select a project" button in upper left corner
 3. From the popup, select "NEW PROJECT"
