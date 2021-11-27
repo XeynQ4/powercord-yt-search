@@ -79,11 +79,6 @@ module.exports = class YTSearch extends Plugin {
                 {
                     title: snippet.title,
                     url: `https://www.youtube.com/watch?v=${video.id.videoId}`,
-                    author: {
-                        name: 'Youtube',
-                        icon_url: 'https://i.imgur.com/nTbh3lr.png',
-                        url: 'https://www.youtube.com/'
-                    },
                     description: snippet.description,
                     image: {
                         url: snippet.thumbnails.high.url,
