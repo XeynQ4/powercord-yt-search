@@ -58,7 +58,10 @@ module.exports = class YTSearch extends Plugin {
             });
         });
 
-        if (data.error.errors[0].reason === 'quotaExceeded') {
+        if (
+            data?.error?.errors[0]?.reason &&
+            data.error.errors[0].reason === 'quotaExceeded'
+        ) {
             console.log(data.error.errors[0].message);
             return this.sendMessage({
                 content:
