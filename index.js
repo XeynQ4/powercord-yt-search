@@ -51,18 +51,27 @@ module.exports = class YTSearch extends Plugin {
         )}&key=${apiKey}`;
 
         const data = await this.getData(url).catch(e => {
-            if (e.name === 'quotaExceeded') {
-                return this.sendMessage({
-                    content:
-                        'You have exceeded the daily quota for this API key. Try again tommorow.'
-                });
-            }
             console.error(e);
             return this.sendMessage({
                 content:
                     'An error occured. I printed it in the console if you want to take a look.'
             });
         });
+
+        if (data.error.errors[0].reason === 'quotaExceeded') {
+            console.log(data.error.errors[0].message);
+            return this.sendMessage({
+                content:
+                    'The daily quota for this API key has been exceeded. Please try again tommorow.'
+            });
+        }
+        if (data.error) {
+            console.error(data.error);
+            return this.sendMessage({
+                content:
+                    'An error occured. I printed it in console if you want to read it.'
+            });
+        }
 
         const video = data.items[0];
         const snippet = video.snippet;
